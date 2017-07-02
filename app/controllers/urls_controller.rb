@@ -5,7 +5,11 @@ class UrlsController < ApplicationController
   end
 
   def show
-    redirect_to load_url.origin if load_url.increase_click!
+    if load_url.nil?
+      redirect_to urls_path
+    else
+      redirect_to load_url.origin if load_url.increase_click!
+    end
   end
 
   private
