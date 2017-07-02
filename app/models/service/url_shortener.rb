@@ -1,6 +1,6 @@
 class Service::UrlShortener
 
-  BASE_URL = "http://alessandrostein.com"
+  BASE_URL = "http://shre.xyz"
 
   def self.call(slug)
     "#{BASE_URL}/#{slug}"

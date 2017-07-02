@@ -1,1 +1,9 @@
-<%= @urls.to_json %>
+<ul>
+<% @urls.each do |url| %>
+  <li>
+    <div class="date">
+      <%= url.created_at.strftime('%F') %>
+    </div>
+    <%= link_to url.origin %> (<%= url.clicks %> clicks)
+<% end %>
+</ul>
