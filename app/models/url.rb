@@ -1,5 +1,7 @@
 class Url < ActiveRecord::Base
 
+  has_many :url_clicks
+
   def to_s
     { id: id, origin: origin, slug: slug, clicks: clicks, created_at: created_at, updated_at: updated_at }
   end
