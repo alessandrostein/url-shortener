@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
   before_create :set_slug!
 
   def to_s
-    { id: id, name: origin, slug: slug }
+    { id: id, name: name, slug: slug }
   end
 
   private
