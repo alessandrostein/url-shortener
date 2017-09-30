@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170704232724) do
+ActiveRecord::Schema.define(version: 20170930202215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+  end
 
   create_table "url_clicks", force: :cascade do |t|
     t.integer  "url_id"
@@ -28,10 +33,15 @@ ActiveRecord::Schema.define(version: 20170704232724) do
   create_table "urls", force: :cascade do |t|
     t.string   "origin"
     t.string   "slug"
-    t.integer  "clicks",     default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "clicks",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "category_id"
+    t.string   "title"
+    t.string   "description"
+    t.index ["category_id"], name: "index_urls_on_category_id", using: :btree
   end
 
   add_foreign_key "url_clicks", "urls"
+  add_foreign_key "urls", "categories"
 end

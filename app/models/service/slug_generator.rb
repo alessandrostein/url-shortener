@@ -1,7 +1,7 @@
 class Service::SlugGenerator
 
   def self.call(identifier)
-    identifier.to_s(36)
+    SecureRandom.hex(2)
   end
 
 end

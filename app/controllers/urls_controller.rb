@@ -1,7 +1,11 @@
 class UrlsController < ApplicationController
 
   def index
-    @urls = Url.all.order("created_at desc")
+    @urls = Url.recents
+
+    respond_to do |format|
+      format.html.amp      
+    end
   end
 
   def show
