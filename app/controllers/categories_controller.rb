@@ -11,4 +11,8 @@ class CategoriesController < ApplicationController
     @category ||= Category.find_by(slug: params[:slug])
   end
 
+  def define_meta_tags!  
+    @meta = { title: load_category.name, description: load_category.description }
+  end
+
 end

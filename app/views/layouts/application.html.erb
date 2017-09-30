@@ -1,7 +1,8 @@
 <!doctype html>
 <html ⚡>
   <head>
-    <title><%= @title %></title>
+    <title><%= @meta[:title] %></title>
+    <meta name="description" content="<%= @meta[:description] %>">
     <%= csrf_meta_tags %>
 
     <meta charset="utf-8">
