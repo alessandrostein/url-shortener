@@ -1,0 +1,9 @@
+<ul>
+  <% urls.each do |url| %>
+    <li class='article'>
+      <h1><%= url.title %></h1>
+      <p class='description'><%= url.description %></p>
+      <%= link_to "http://shre.xyz/#{url.slug}", "http://shre.xyz/#{url.slug}" %>
+    </li>
+  <% end %>
+</ul>
