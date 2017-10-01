@@ -11,6 +11,7 @@
     <meta name="B-verify" content="840e1cccef9351868e6a6dee8efa58af03b9a447" />
 
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <link rel="canonical" href="<%= request.original_url %>">
@@ -75,12 +76,47 @@
         <ul>
           <li><%= link_to 'Inicio', urls_path %></li>
           <% Category.all.each do |category| %>
-            <li><%= link_to category.name, categories_path(category.slug) %></li>
+            <li><%= link_to category.name, categories_path(category.slug), class: 'link-category' %></li>
           <% end %>
         </ul>
       </footer>
 
     </div>
+
+    <amp-analytics type="googleanalytics">
+      <script type="application/json">
+        {
+          "vars": {
+            "account": "UA-107277241-1"
+          },
+          "triggers": {
+            "trackPageview": {
+              "on": "visible",
+              "request": "pageview"
+            },
+            "trackClickOnFooter": {
+              "selector": ".link-category",
+              "on": "click",
+              "request": "event",
+              "vars": {
+                "eventCategory": "footer-url",
+                "eventAction": "click"
+              }
+            },
+            "trackClickOnArticle": {
+              "selector": ".link-article",
+              "on": "click",
+              "request": "event",
+              "vars": {
+                "eventCategory": "article-url",
+                "eventAction": "click"
+              }
+            }
+          }
+        }
+      </script>
+    </amp-analytics>
+
   </body>
 
 </html>
