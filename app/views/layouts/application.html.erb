@@ -30,7 +30,23 @@
         margin-right: 30px;
       }
 
+      .header {
+        text-align: center;
+        padding-top: 20px;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+
       h1 {
+        font-size: 22px;
+      }
+
+      h2 {
+        font-size: 20px;
+        font-weight: 300;
+      }
+
+      h3 {
         font-size: 18px;
       }
 
@@ -45,7 +61,7 @@
 
       footer ul li {
         margin-top: 15px;
-      }      
+      }
 
       .container {
         margin: 0 auto;
@@ -65,8 +81,13 @@
 
   </head>
 
-  <body>
+  <body itemscope itemtype='http://schema.org/WebPage'>
     <div class='container'>
+
+      <div class="header">
+        <h1 itemprop="name"><%= @meta[:title] %></h1>
+        <h2 itemprop="description"><%= @meta[:description] %></h2>
+      </div>
 
       <%= yield %>
 
